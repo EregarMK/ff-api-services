@@ -4,9 +4,8 @@ export interface TrashedEntity {
     content: Entity;
     schemaName: string;
     entityId: string;
-    deletionDate: number;
-    deleterId: string;
-    title: string;
+    deletedAt: number;
+    deletedBy: string;
 }
 
 export interface TrashedEntitiesResponse {

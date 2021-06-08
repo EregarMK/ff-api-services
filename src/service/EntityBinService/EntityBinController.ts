@@ -1,8 +1,6 @@
 import { APIClient, APIMapping } from '../../http';
 import { TrashedEntitiesResponse, TrashedEntitiesSchemaNameResponse, TrashedEntityRequestItem } from './EntityBinService.Types';
 
-import { trashedEntities } from './mock';
-
 export class EntityBinController extends APIClient {
     constructor() {
         super(APIMapping.entityBinService);
@@ -13,24 +11,19 @@ export class EntityBinController extends APIClient {
      * returns list of trashed entities
      *
      * @param page
-     * @param pageSize
+     * @param size
      * @param schemaName
      */
 
-    async getTrashedEntities(page: number, pageSize: number, schemaName?: string) {
-        return this.invokeApiWithErrorHandling<TrashedEntitiesResponse>(
-            '/',
-            'GET',
-            undefined,
-            {
-                queryParams: {
-                    page,
-                    pageSize,
-                    schemaName,
-                },
+    async getTrashedEntities(page: number, size = 50, schemaName?: string) {
+        // if no schemaname all
+        return this.invokeApiWithErrorHandling<TrashedEntitiesResponse>('/', 'GET', undefined, {
+            queryParams: {
+                page,
+                size,
+                schemaName,
             },
-            trashedEntities
-        );
+        });
     }
 
     /**
@@ -64,4 +57,8 @@ export class EntityBinController extends APIClient {
     async getTrashedEntitySchemaNames() {
         return this.invokeApiWithErrorHandling<TrashedEntitiesSchemaNameResponse>('/', 'GET');
     }
+
+    async completelyDeleteBin() {}
+
+    async completelyRestoreBin() {}
 }

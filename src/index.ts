@@ -1,3 +1,4 @@
+/* eslint-disable import/no-internal-modules */
 export { default as AdminTokenService } from './service/AdminTokenService';
 export { default as AgentRecommendationService } from './service/AgentRecommendationService';
 export { default as AppointmentBookingService } from './service/AppointmentBookingService';
@@ -81,6 +82,7 @@ export * from './service/GeoInformationService';
 export * from './service/EverSignService';
 export * from './service/ContractService';
 export * from './service/EntityShareService';
+export * from './service/EntityBinService';
 
 export * from './http';
 export * from './util/EnvironmentManagement';

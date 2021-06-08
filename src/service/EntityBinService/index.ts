@@ -1,11 +1,13 @@
 import { EntityBinController } from './EntityBinController';
 
-export default class EntityBinService {
-    public static instance = new EntityBinService();
+export * from './EntityBinService.Types';
 
+export class EntityBinService {
     public readonly entityBin: EntityBinController;
 
     constructor() {
         this.entityBin = new EntityBinController();
     }
 }
+
+export const EntityBinServiceInstance = new EntityBinService();
